@@ -1,0 +1,24 @@
+def count_words(filename):
+  """Counts the occurrences of each word in a file.
+  Args:
+    filename: The name of the file to read.
+  Returns:
+    A dictionary mapping each word to its count.
+  """
+  counts = {}
+  with open(filename) as f:
+    for line in f:
+      for word in line.split():
+        counts[word] = counts.get(word, 0) + 1
+  return counts
+def main():
+  """Reads a text file and counts the occurrences of each word in the file.
+  Displays the results in alphabetical order along with their respective counts.
+  """
+  filename = input("Enter the name of the file: ")
+  counts = count_words(filename)
+  #Display the results in alphabetical order along with their respective counts.
+  for word, count in sorted(counts.items()):
+    print(f"{word}: {count}")
+if __name__ == "__main__":
+  main()
